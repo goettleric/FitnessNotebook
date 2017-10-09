@@ -1,0 +1,84 @@
+﻿@model FitnessNotebook.Models.Exercises
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Exercises</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExerciseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExerciseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Repetitions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Repetitions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WeightType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WeightType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DistanceDone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DistanceDone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExerciseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
