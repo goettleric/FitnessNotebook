@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.Linq.Expressions;
 
 namespace FitnessNotebook.Models
 {
@@ -53,7 +55,14 @@ namespace FitnessNotebook.Models
         [Range(0, 999.99)]
         public decimal DistanceDone { get; set; }
 
+        internal SqlDbType ToList()
+        {
+            throw new NotImplementedException();
+        }
 
-
+        internal static Expression<Func<object, object>> Equals(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

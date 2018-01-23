@@ -23,6 +23,9 @@ namespace FitnessNotebook
                       "~/Scripts/respond.js",
                       "~/Scripts/slideshow.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/dropdownmenu").Include(
+                      "~/Scripts/exerciseMenuPopulator.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

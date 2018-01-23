@@ -77,8 +77,10 @@
         </dd>
 
     </dl>
+    
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ExerciseID }) |
+    @Html.ActionLink("Exercise Progress Chart", "ProgressChart", new { exerciseName = Model.ExerciseName} ) |
     @Html.ActionLink("Back to List", "Index")
 </p>

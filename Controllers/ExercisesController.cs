@@ -6,6 +6,9 @@ using FitnessNotebook.DAO;
 using FitnessNotebook.Models;
 using System.Data.SqlClient;
 using Microsoft.AspNet.Identity;
+using System.Web.Helpers;
+using System;
+using System.Collections.Generic;
 
 namespace FitnessNotebook.Controllers
 {
@@ -31,9 +34,9 @@ namespace FitnessNotebook.Controllers
             {
                 return HttpNotFound();
             }
-
             
             return View(exercises);
+
         }
 
         // GET: Exercises/Create
@@ -42,7 +45,15 @@ namespace FitnessNotebook.Controllers
             Exercises newExercise = new Exercises();
             newExercise.Email = User.Identity.GetUserName();
 
-            SelectListItem muscleGroup = new SelectListItem();
+
+            //Populate the drop down menu for the four exercise types.
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Endurance", Value = "0" });
+            items.Add(new SelectListItem { Text = "Strength", Value = "1" });
+            items.Add(new SelectListItem { Text = "Balance", Value = "2" });
+            items.Add(new SelectListItem { Text = "Flexibility", Value = "3" });
+
+            ViewBag.ExerciseTypes = items;
 
             return View(newExercise);
         }
@@ -129,6 +140,48 @@ namespace FitnessNotebook.Controllers
             db.Exercises.Remove(exercises);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: Chart Creation Methods
+        
+        public ActionResult ProgressChart(string exerciseName)
+        {
+            if (exerciseName == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var report = db.Exercises.AsEnumerable().Select(s => new
+                {
+                    Email = s.Email,
+                    Weight = s.Weight,
+                    ExeriseName = s.ExerciseName,
+                }).Where(s => s.Email == User.Identity.Name && s.ExeriseName == exerciseName);
+
+                var chart = new Chart(width: 800, height: 350, theme: ChartTheme.Green).AddTitle("Progress Over Time\n\nValues Shown In Order Of Entry");
+
+                foreach (var i in report)
+                {
+                    chart.AddSeries(
+                       chartType: "column",
+                       axisLabel: exerciseName,
+                       yValues: new[] { i.Weight },
+                       yFields: i.Weight.ToString())
+                .GetBytes("png");
+
+                }
+                chart.Write("png");
+                
+                
+            }
+
+            return null;
+        }
+
+        private void Select(object weight)
+        {
+            throw new NotImplementedException();
         }
 
         protected override void Dispose(bool disposing)

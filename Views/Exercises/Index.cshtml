@@ -15,7 +15,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ExerciseName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Repetitions)
         </th>
         <th>
@@ -26,16 +26,16 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Weight)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Duration)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DistanceDone)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -45,7 +45,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.ExerciseName)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Repetitions)
         </td>
         <td>
@@ -56,16 +56,16 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Weight)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Duration)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DistanceDone)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ExerciseID })<br />
             @Html.ActionLink("Details", "Details", new { id=item.ExerciseID })<br />
@@ -75,3 +75,5 @@
 }
 
 </table>
+
+
